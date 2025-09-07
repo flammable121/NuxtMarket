@@ -1,0 +1,60 @@
+/* reset.scss */
+
+/* Убираем отступы и задаём общий box-sizing */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ссылки без подчеркивания по умолчанию */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Список без стандартных маркеров */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Заголовки и параграфы без дефолтных отступов */
+h1, h2, h3, h4, h5, h6,
+p {
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+}
+
+/* Изображения не выходят за контейнер */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Таблицы без отступов */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Формы */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+/* Кнопки */
+button {
+  cursor: pointer;
+}
