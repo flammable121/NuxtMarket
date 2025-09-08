@@ -1,47 +1,30 @@
 .typography {
-  &--font-16px {
-    color: #252525;
-    font-family: Raleway, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 200;
-    line-height: normal;
-  }
-
-  &--font-16pxbold {
-    color: #252525;
-    text-align: center;
-    font-family: Raleway, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-  }
-
-  &--font-18px {
-    color: #FFF;
-    font-family: Raleway, sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-  }
-
-  &--font-20px {
-  color: #252525;
-  font-family: Raleway, sans-serif;
-  font-size: 20px;
+  font-family: "Raleway", sans-serif;
   font-style: normal;
-  font-weight: 300;
   line-height: normal;
+  color: #252525;
+
+  &--16 {
+    font-size: 16px;
+    font-weight: 200;
   }
 
-  &--font-36px {
-    color: #252525;
-    font-family: Raleway, sans-serif;
-    font-size: 36px;
-    font-style: normal;
+  &--18 {
+    font-size: 18px;
     font-weight: 300;
-    line-height: normal;
+  }
+
+  &--20 {
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  &--36 {
+    font-size: 36px;
+    font-weight: 300;
+  }
+
+  &--bold {
+    font-weight: 700;
   }
 }
