@@ -15,22 +15,18 @@
 </script>
 
 <template>
-  <component
-    :class="buttonClasses"
-    class="btn"
-  >
-    <span v-if="$slots.default" class="btn__icon">
-      <slot/>
+  <component :class="buttonClasses" class="btn">
+    <span v-if="$slots.icon" class="btn__icon">
+      <slot name="icon"/>
     </span>
-    <span v-if="$slots.secondslot" class="btn__title">
-      <slot name="secondslot"/>
+    <span v-if="$slots.title" class="btn__title">
+      <slot name="title"/>
     </span>
   </component>
 </template>
 
 <style scoped lang="scss">
   .btn {
-    margin: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +48,8 @@
       ),
       small: (
           width: 160px,
-          height: 400px,
+          height: 40px,
+
       )
     );
     @each $size, $config in $sizes {
