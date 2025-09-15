@@ -4,27 +4,45 @@
   line-height: normal;
   color: #252525;
 
+  &--14 {
+    &--bold {
+      font-weight: 700;
+    }
+    font-size: 14px;
+    font-weight: 200;
+  }
+
   &--16 {
+    &--bold {
+      font-weight: 700;
+    }
     font-size: 16px;
     font-weight: 200;
   }
 
   &--18 {
+    &--bold {
+      font-weight: 700;
+    }
     font-size: 18px;
     font-weight: 300;
   }
 
   &--20 {
+    &--bold {
+      font-weight: 700;
+    }
     font-size: 20px;
     font-weight: 300;
   }
 
   &--36 {
+    &--bold {
+      font-weight: 700;
+    }
     font-size: 36px;
     font-weight: 300;
   }
 
-  &--bold {
-    font-weight: 700;
-  }
+
 }
