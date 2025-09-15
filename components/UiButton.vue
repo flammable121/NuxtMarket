@@ -1,26 +1,17 @@
 <script setup lang="ts">
-  import { computed } from 'vue'
+defineProps({
+  label: String
+})
 
-  export interface  UiButtonProps {
-      sizes?: "small" | "big";
-  }
-
-  const buttonClasses = computed(() => [
-      `btn--${props.sizes}`,
-  ])
-
-  const props = withDefaults(defineProps<UiButtonProps>(), {
-      sizes: "big",
-  })
 </script>
 
 <template>
-  <component :class="buttonClasses" class="btn">
+  <component class="btn">
     <span v-if="$slots.icon" class="btn__icon">
       <slot name="icon"/>
     </span>
-    <span v-if="$slots.title" class="btn__title">
-      <slot name="title"/>
+    <span class="btn__label">
+      {{ label }}
     </span>
   </component>
 </template>
@@ -33,30 +24,17 @@
     border: 1px solid black;
     gap: 10px;
     cursor: pointer;
+    padding: 12px 24px;
+    max-width: 200px;
+    height: auto;
 
     &:hover {
       box-shadow: 0px 10px 15px map-get($colors, black);
     }
     &:active {
       box-shadow: none;
-    }
-
-    $sizes: (
-      big: (
-          width: 255px,
-          height: 50px,
-      ),
-      small: (
-          width: 160px,
-          height: 40px,
-
-      )
-    );
-    @each $size, $config in $sizes {
-      &--#{$size} {
-        width: map-get($config, width);
-        height: map-get($config, height);
-      }
+      background-color: map-get($colors, black);
+      z-index: 2;
     }
   }
 </style>
