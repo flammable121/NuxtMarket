@@ -1,40 +1,62 @@
 <script setup lang="ts">
-defineProps({
-  label: String
+import { computed } from 'vue'
+
+export interface  UiButtonProps {
+  to?: string;
+  href?: string;
+}
+
+const props = withDefaults(defineProps<UiButtonProps>(), {
+
 })
 
+const componentType = computed(() => {
+  if (props.to) return 'NuxtLink';
+  if (props.href) return 'a';
+  return 'button';
+})
 </script>
 
 <template>
-  <component class="btn">
-    <span v-if="$slots.icon" class="btn__icon">
-      <slot name="icon"/>
+  <component
+      :is="componentType"
+      :to="to"
+      :href="href"
+      class="btn"
+  >
+    <span v-if="$slots.default" class="btn__icon">
+      <slot/>
     </span>
-    <span class="btn__label">
-      {{ label }}
+    <span v-if="$slots.secondslot" class="btn__title">
+      <slot name="secondslot"/>
     </span>
   </component>
 </template>
 
 <style scoped lang="scss">
-  .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    gap: 10px;
-    cursor: pointer;
-    padding: 12px 24px;
-    max-width: 200px;
-    height: auto;
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  gap: 10px;
+  cursor: pointer;
+  width: 255px;
+  height: 50px;
 
-    &:hover {
-      box-shadow: 0px 10px 15px map-get($colors, black);
-    }
-    &:active {
-      box-shadow: none;
-      background-color: map-get($colors, black);
-      z-index: 2;
-    }
+  @media (max-width: 870px) {
+    width: 160px;
+    height: 40px;
+    font-size: 12px;
+    padding: 5px;
   }
+
+  &:hover {
+    box-shadow: 0 10px 15px map-get($colors, black);
+  }
+  &:active {
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
 </style>
