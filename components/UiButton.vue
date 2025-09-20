@@ -1,23 +1,28 @@
 <script setup lang="ts">
-  import { computed } from 'vue'
+import { computed } from 'vue'
 
-  export interface  UiButtonProps {
-      sizes?: "small" | "big";
-  }
+export interface  UiButtonProps {
+  to?: string;
+  href?: string;
+}
 
-  const buttonClasses = computed(() => [
-      `btn--${props.sizes}`,
-  ])
+const props = withDefaults(defineProps<UiButtonProps>(), {
 
-  const props = withDefaults(defineProps<UiButtonProps>(), {
-      sizes: "big",
-  })
+})
+
+const componentType = computed(() => {
+  if (props.to) return 'NuxtLink';
+  if (props.href) return 'a';
+  return 'button';
+})
 </script>
 
 <template>
   <component
-    :class="buttonClasses"
-    class="btn"
+      :is="componentType"
+      :to="to"
+      :href="href"
+      class="btn"
   >
     <span v-if="$slots.default" class="btn__icon">
       <slot/>
@@ -29,37 +34,29 @@
 </template>
 
 <style scoped lang="scss">
-  .btn {
-    margin: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    gap: 10px;
-    cursor: pointer;
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  gap: 10px;
+  cursor: pointer;
+  width: 255px;
+  height: 50px;
 
-    &:hover {
-      box-shadow: 0px 10px 15px map-get($colors, black);
-    }
-    &:active {
-      box-shadow: none;
-    }
-
-    $sizes: (
-      big: (
-          width: 255px,
-          height: 50px,
-      ),
-      small: (
-          width: 160px,
-          height: 400px,
-      )
-    );
-    @each $size, $config in $sizes {
-      &--#{$size} {
-        width: map-get($config, width);
-        height: map-get($config, height);
-      }
-    }
+  @media (max-width: 870px) {
+    width: 160px;
+    height: 40px;
+    font-size: 12px;
+    padding: 5px;
   }
+
+  &:hover {
+    box-shadow: 0 10px 15px map-get($colors, black);
+  }
+  &:active {
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
 </style>

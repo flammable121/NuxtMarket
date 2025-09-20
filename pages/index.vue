@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import buttonFavorites from '~/components/buttonFavorites.vue';
-import selectCurrency from '~/components/selectCurrency.vue';
+import HeaderMenu from "~/components/HeaderAndFooter/HeaderMenu.vue";
+import FooterMenu from "~/components/HeaderAndFooter/FooterMenu.vue";
 </script>
 
 <template>
-  <button-favorites/>
-  <select-currency/>
+  <HeaderMenu/>
+  <FooterMenu/>
 </template>
 
 <style scoped>
