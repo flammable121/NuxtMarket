@@ -16,6 +16,10 @@ const componentType = computed(() => {
   if (props.href) return 'a';
   return 'button';
 })
+const { width } = useWindowSize();
+
+const isMobile = computed(() => width.value < 870);
+const isDesktop = computed(() => width.value >= 870);
 </script>
 
 <template>
@@ -23,7 +27,10 @@ const componentType = computed(() => {
       :is="componentType"
       :to="to"
       :href="href"
-      :class="['btn', `btn-${variant}`]"
+      :class="['btn',
+       `btn-${variant}`,
+       { 'btn-mobile': isMobile, 'btn-desktop': isDesktop }
+       ]"
   >
     <span v-if="$slots.default" class="btn__icon">
       <slot/>
@@ -36,6 +43,7 @@ const componentType = computed(() => {
 
 <style scoped lang="scss">
 @use "assets/style/mixins";
+@use "assets/style/typography";
 .btn {
   @include mixins.flex-center;
   gap: 10px;
@@ -49,6 +57,16 @@ const componentType = computed(() => {
   }
   &:active {
     box-shadow: none;
+  }
+
+  &-mobile {
+    @extend .typography-14;
+    padding: 12px 20px;
+  }
+
+  &-desktop {
+    @extend .typography-16;
+    padding: 18px 30px;
   }
 
   &-primary {
