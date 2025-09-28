@@ -1,0 +1,19 @@
+$breakpoints: (
+        mobile: 0,
+        desktop: 870px,
+);
+
+@mixin media($name) {
+
+  $value: map-get($breakpoints, $name);
+
+  @if $value == 0 {
+    @media (max-width: #{map-get($breakpoints, desktop) - 1}) {
+      @content;
+    }
+  } @else {
+  @media (min-width: $value) {
+    @content;
+  }
+}
+}
