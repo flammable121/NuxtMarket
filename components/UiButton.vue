@@ -16,10 +16,6 @@ const componentType = computed(() => {
   if (props.href) return 'a';
   return 'button';
 })
-const { width } = useWindowSize();
-
-const isMobile = computed(() => width.value < 870);
-const isDesktop = computed(() => width.value >= 870);
 </script>
 
 <template>
@@ -27,10 +23,7 @@ const isDesktop = computed(() => width.value >= 870);
       :is="componentType"
       :to="to"
       :href="href"
-      :class="['btn',
-       `btn-${variant}`,
-       { 'btn-mobile': isMobile, 'btn-desktop': isDesktop }
-       ]"
+      :class="['btn', `btn--${variant}`]"
   >
     <span v-if="$slots.default" class="btn__icon">
       <slot/>
@@ -44,38 +37,38 @@ const isDesktop = computed(() => width.value >= 870);
 <style scoped lang="scss">
 @use "assets/style/mixins";
 @use "assets/style/typography";
+@use "assets/style/breakpoints";
+
 .btn {
   @include mixins.flex-center;
+  @extend .typography-16;
   gap: 10px;
   min-width: 150px;
   min-height: 40px;
   cursor: pointer;
+  @include breakpoints.media(desktop) {
+    padding: 18px 30px;
+  }
+  @include breakpoints.media(mobile) {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
 
 
   &:hover {
-    box-shadow: 0 10px 15px map-get($colors, black);
+    box-shadow: 0 15px 10px map-get($colors, black);
   }
   &:active {
     box-shadow: none;
   }
 
-  &-mobile {
-    @extend .typography-14;
-    padding: 12px 20px;
-  }
-
-  &-desktop {
-    @extend .typography-16;
-    padding: 18px 30px;
-  }
-
-  &-primary {
+  &--primary {
     border: 1px solid black;
     &:active {
       background-color: rgba(0, 0, 0, 0.1);
     }
   }
-  &-gold {
+  &--gold {
     border: none;
     background-color: map-get($colors, gold);
     color: map-get($colors, white);
