@@ -28,7 +28,7 @@ const componentType = computed(() => {
     <span v-if="$slots.default" class="btn__icon">
       <slot/>
     </span>
-    <span v-if="$slots.title" class="btn__title">
+    <span v-if="$slots.title" class="btn__title typography-16">
       <slot name="title"/>
     </span>
   </component>
