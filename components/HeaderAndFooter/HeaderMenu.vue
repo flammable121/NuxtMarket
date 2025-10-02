@@ -7,7 +7,7 @@
     <div class="header__container">
 
       <div class="header__left">
-        <Svgo-Burger class="header__burger"/>
+        <SvgoBurger class="header__burger"/>
         <nav class="header__nav">
           <NuxtLink to="/"  class="header__nav-link typography--18">NEW</NuxtLink>
           <NuxtLink to="/" class="header__nav-link typography--18">КАТАЛОГ</NuxtLink>
