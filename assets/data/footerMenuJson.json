@@ -1,0 +1,51 @@
+{
+  "footer": {
+    "columns": [
+      {
+        "title": "КОМПАНИЯ",
+        "items": [
+          { "text": "О нас", "link": "/about" },
+          { "text": "Контакты", "link": "/contacts" }
+        ]
+      },
+      {
+        "title": "ПОЛЕЗНОЕ",
+        "items": [
+          { "text": "Оплата и доставка", "link": "/payment-delivery" },
+          { "text": "Условия возврата", "link": "/returns" },
+          { "text": "Бонусная система", "link": "/bonus" }
+        ]
+      },
+      {
+        "title": "ПОКУПАТЕЛЮ",
+        "items": [
+          { "text": "Избранное", "link": "/favorites" },
+          { "text": "Публичная оферта", "link": "/offer" },
+          { "text": "Политика конфиденциальности", "link": "/privacy" }
+        ]
+      },
+      {
+        "title": "КОНТАКТЫ",
+        "items": [
+          {
+            "type": "social",
+            "icons": [
+              { "name": "instagram", "url": "https://instagram.com/...", "icon": "/icon/insta.svg"},
+              { "name": "telegram", "url": "https://t.me/...", "icon": "/icon/tg.svg"}
+            ]
+          },
+          {
+            "type": "phone",
+            "text": "+38(073) 096 36 44",
+            "link": "tel:+380730963644"
+          },
+          {
+            "type": "email",
+            "text": "info@yanki.com",
+            "link": "mailto:info@yanki.com"
+          }
+        ]
+      }
+    ]
+  }
+}

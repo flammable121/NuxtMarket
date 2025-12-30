@@ -48,27 +48,24 @@ function toggleColumn() {
     width: 100%;
     border-bottom: 1px solid black;
     margin: 0 auto;
-    align-items: center;
     gap: 10px;
   }
 
   &__title {
-    position: relative;
     display: flex;
     gap: 16px;
-    width: 100%;
 
     @include breakpoints.media(mobile) {
-      justify-content: center;
       cursor: pointer;
+      width: 100%;
     }
 
     @include breakpoints.media(desktop) {
-      cursor: default;
+      cursor: pointer;
     }
 
     &-content {
-      flex: 1 1 auto;
+      flex: 1;
 
       @include breakpoints.media(mobile) {
         text-align: center;
@@ -78,8 +75,6 @@ function toggleColumn() {
     &-icon {
       color: map-get($colors, gold);
       @include animation.transition03;
-      position: absolute;
-
       @include breakpoints.media(desktop) {
         display: none;
 

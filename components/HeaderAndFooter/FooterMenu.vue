@@ -1,50 +1,39 @@
 <script setup lang="ts">
+import footerMenuJson from '~/assets/data/footerMenuJson.json';
+import type { FooterData } from '~/assets/types/footer.ts';
+
+const footerMenu = footerMenuJson as FooterData
 
 </script>
 
 <template>
   <div class="footer">
     <div class="footer__container">
-      <UiAccordion class="footer__container--accordion">
+      <UiAccordion
+          v-for="(col, index) in footerMenu.footer.columns"
+          :key="index"
+          :to="col.items"
+          class="footer__container--accordion"
+      >
         <template #title>
-          КОМПАНИЯ
+          {{ col.title }}
         </template>
+
         <template #column>
-          <NuxtLink to="/"> О наc </NuxtLink>
-          <NuxtLink to="/"> Контакты </NuxtLink>
-        </template>
-      </UiAccordion>
-      <UiAccordion class="footer__container--accordion">
-        <template #title>
-          ПОЛЕЗНОЕ
-        </template>
-        <template #column>
-          <NuxtLink to="/"> Оплата и доставка </NuxtLink>
-          <NuxtLink to="/"> Условия возврата </NuxtLink>
-          <NuxtLink to="/"> Бонусная система </NuxtLink>
-        </template>
-      </UiAccordion>
-      <UiAccordion class="footer__container--accordion">
-        <template #title>
-          ПОЛЕЗНОЕ
-        </template>
-        <template #column>
-          <NuxtLink to="/"> Избранное </NuxtLink>
-          <NuxtLink to="/"> Публичная оферта </NuxtLink>
-          <NuxtLink to="/"> Политика конфиденциальности </NuxtLink>
-        </template>
-      </UiAccordion>
-      <UiAccordion class="footer__container--accordion">
-        <template #title>
-          КОНТАКТЫ
-        </template>
-        <template #column>
-          <div>
-            <NuxtLink> <SvgoInsta/> </NuxtLink>
-            <NuxtLink> <SvgoTg/> </NuxtLink>
+          <div v-for="(items, i) in col.items" :key="i">
+            <div class="icon" v-if="items.type === 'social'">
+              <a
+                  v-for="icon in items.icons"
+                  :key="icon.name"
+                  :href="icon.url"
+              >
+                <img :src="icon.icon" :alt="icon.name" class="icon" />
+              </a>
+            </div>
+            <a  v-else-if="items.link" :href="items.link">
+              {{ items.text }}
+            </a>
           </div>
-          <NuxtLink to="/"> +38(073) 096 36 44 </NuxtLink>
-          <NuxtLink to="/"> info@yanki.com </NuxtLink>
         </template>
       </UiAccordion>
     </div>
@@ -72,9 +61,13 @@
     }
     &--accordion {
       padding-top: 20px;
+      .icon {
+        display: flex;
+      }
     }
   }
   &__copyright {
+    margin: 30px;
   }
 }
 </style>
